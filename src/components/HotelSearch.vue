@@ -1,15 +1,23 @@
 <template>
-  <div>
-    <p>hotel検索</p>
-    <div>
-      <div v-for="hotel in hotels" :key="hotelName(hotel)">
-        <a :href="hotelUrl(hotel)">{{hotelName(hotel)}}</a>
-        <p>{{hotelSpecial(hotel)}}</p>
-        <p>{{hotelAccess(hotel)}}</p>
-        <p v-html="hotelReview(hotel)"></p>
-      </div>
-    </div>
-  </div>
+  <v-container>
+    <h2>ホテルリスト</h2>
+    <template v-for="hotel in hotels">
+      <v-row :key="hotelName(hotel)">
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <a :href="hotelUrl(hotel)">{{hotelName(hotel)}}</a>
+        </v-col>
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <p>{{hotelSpecial(hotel)}}</p>
+        </v-col>
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <p>アクセス：{{hotelAccess(hotel)}}</p>
+        </v-col>
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <p v-html="hotelReview(hotel)"></p>
+        </v-col>
+      </v-row>
+    </template>
+  </v-container>
 </template>
 
 <script>
@@ -28,8 +36,8 @@ export default {
     hotelAccess(info) {
       return info.hotel[0].hotelBasicInfo.access;
     },
-    hotelReview(info){
-        return info.hotel[0].hotelBasicInfo.userReview;
+    hotelReview(info) {
+      return info.hotel[0].hotelBasicInfo.userReview;
     }
   }
 };
