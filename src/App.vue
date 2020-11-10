@@ -1,39 +1,70 @@
 <template>
-  <div id="app">
-    <Slide :closeOnNavigation="true">
-      <p @click="setComponent('HotelSearch')" class="hamburger-menu">ホテル</p>
-      <p @click="setComponent('RestaurantSearch')" class="hamburger-menu">飲食店</p>
-      <p @click="setComponent('Start')" class="hamburger-menu">再検索</p>
-    </Slide>
-
-    <template v-if="currentComponent == 'Start'">
-      <Start @hotels="hotels = $event" @restaurants="restaurants = $event"></Start>
-    </template>
-    <template v-else-if="currentComponent == 'HotelSearch'">
-      <HotelSearch :hotels="hotels"></HotelSearch>
-    </template>
-    <template v-else-if="currentComponent == 'RestaurantSearch'">
-      <RestaurantSearch :restaurants="restaurants"></RestaurantSearch>
-    </template>
-  </div>
+  <v-app>
+    <v-navigation-drawer app v-model="drawer" clipped>
+      <v-container>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title grey--text text--darken-2">メニュー</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider></v-divider>
+        <v-list dense nav>
+          <template v-for="nav_list in nav_lists">
+            <v-list-item :key="nav_list.name">
+              <v-list-item-content>
+                <v-list-item-title
+                  @click="currentComponent = nav_list.valu; drawer=!drawer;"
+                  class="hamburger-menu"
+                >{{ nav_list.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+        </v-list>
+      </v-container>
+    </v-navigation-drawer>
+    <v-app-bar color="green" dark app clipped-left>
+      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>トラベルサーチ</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn text>使い方</v-btn>
+      </v-toolbar-items>
+    </v-app-bar>
+    <v-main>
+      <template v-if="currentComponent == 'Start'">
+        <Start @hotels="hotels = $event" @restaurants="restaurants = $event"></Start>
+      </template>
+      <template v-else-if="currentComponent == 'HotelSearch'">
+        <HotelSearch :hotels="hotels"></HotelSearch>
+      </template>
+      <template v-else-if="currentComponent == 'RestaurantSearch'">
+        <RestaurantSearch :restaurants="restaurants"></RestaurantSearch>
+      </template>
+    </v-main>
+    <v-footer color="green" dark app>@</v-footer>
+  </v-app>
 </template>
 
 <script>
-import { Slide } from "vue-burger-menu";
 import Start from "./components/Start.vue";
 import HotelSearch from "./components/HotelSearch.vue";
 import RestaurantSearch from "./components/RestaurantSearch.vue";
-
 export default {
+  name: "App",
   data() {
     return {
       hotels: {},
       restaurants: {},
-      currentComponent: "Start"
+      currentComponent: "Start",
+      drawer: null,
+      nav_lists: [
+        { name: "ホテル", valu: "HotelSearch" },
+        { name: "飲食店", valu: "RestaurantSearch" },
+        { name: "検索", valu: "Start" }
+      ]
     };
   },
   components: {
-    Slide,
     Start,
     HotelSearch,
     RestaurantSearch
