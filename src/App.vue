@@ -1,28 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Start @hotels="hotels = $event"></Start>
+    <HotelSearch :hotels="hotels"></HotelSearch>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Start from "./components/Start.vue";
+import HotelSearch from "./components/HotelSearch.vue";
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      hotels: {}
+    }
+  },
   components: {
-    HelloWorld
-  }
-}
+    Start,
+    HotelSearch
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
