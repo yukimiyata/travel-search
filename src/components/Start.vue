@@ -1,7 +1,16 @@
 <template>
-  <div>
-    <button @click="start">start</button>
-  </div>
+  <v-container>
+    <v-row>
+      <v-col>
+        
+      </v-col>
+    </v-row>
+    <v-row justify="center" align-content="center">
+        <v-col cols="2" sm="1" md="1" lg="1">
+          <v-btn @click="start" elevation="2" x-large>検索</v-btn>
+        </v-col>
+      </v-row>
+  </v-container>
 </template>
 
 <script>

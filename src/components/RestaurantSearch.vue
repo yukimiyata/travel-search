@@ -1,14 +1,20 @@
 <template>
-  <div>
-    <p>restaurant検索</p>
-    <div>
-      <div v-for="res in restaurants" :key="restaurantName(res)">
-        <a :href="restaurantUrl(res)">{{restaurantName(res)}}</a>
-        <p>{{restaurantCategory(res)}}</p>
-        <p>{{restaurantAccess(res)}}</p>
-      </div>
-    </div>
-  </div>
+  <v-container>
+    <h2>飲食店リスト</h2>
+    <template v-for="res in restaurants">
+      <v-row :key="restaurantName(res)">
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <a :href="restaurantUrl(res)">{{restaurantName(res)}}</a>
+        </v-col>
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <p>{{restaurantCategory(res)}}</p>
+        </v-col>
+        <v-col cols="12" sm="6" md="4" lg="3">
+          <p>アクセス：{{restaurantAccess(res)}}</p>
+        </v-col>
+      </v-row>
+    </template>
+  </v-container>
 </template>
 
 <script>
@@ -24,9 +30,19 @@ export default {
     restaurantCategory(res) {
       return res.code.category_name_l.join(" : ") + res.code.category_name_s;
     },
-    restaurantAccess(res){
-        return res.access.line + res.access.station + res.access.station_exit + " " + res.access.walk + "分";
+    restaurantAccess(res) {
+      return (
+        res.access.line +
+        res.access.station +
+        res.access.station_exit +
+        " " +
+        res.access.walk +
+        "分"
+      );
     }
   }
 };
 </script>
+
+<style scoped>
+</style>
