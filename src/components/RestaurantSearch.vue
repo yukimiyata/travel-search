@@ -2,7 +2,6 @@
   <div>
     <p>restaurant検索</p>
     <div>
-      <p>{{restaurants[5]}}</p>
       <div v-for="res in restaurants" :key="restaurantName(res)">
         <a :href="restaurantUrl(res)">{{restaurantName(res)}}</a>
         <p>{{restaurantCategory(res)}}</p>
