@@ -24,7 +24,7 @@
     </v-navigation-drawer>
     <v-app-bar color="green" dark app clipped-left>
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>トラベルサーチ</v-toolbar-title>
+      <v-toolbar-title>現在地からホテルと飲食店検索！</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-dialog v-model="dialog" width="500">
@@ -33,7 +33,7 @@
           </template>
           <v-card>
             <v-card-title class="headline green lighten-2">現在地からホテルと飲食店検索</v-card-title>
-            <v-card-text>距離を選んで検索ボタンを押すと近くの飲食店とホテルが検索できます！ホテル(楽天)飲食店(ぐるなび)</v-card-text>
+            <v-card-text>距離を選んで検索ボタンを押すと近くの飲食店とホテル(当日の空室)が検索できます！ホテル(楽天)飲食店(ぐるなび)</v-card-text>
             <v-divider></v-divider>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -58,7 +58,7 @@
         <RestaurantSearch :restaurants="restaurants"></RestaurantSearch>
       </template>
     </v-main>
-    <v-footer color="green" dark app>@</v-footer>
+    <v-footer color="green" dark app>ホテルと飲食店検索アプリ</v-footer>
   </v-app>
 </template>
 
