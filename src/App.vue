@@ -27,12 +27,29 @@
       <v-toolbar-title>トラベルサーチ</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text>使い方</v-btn>
+        <v-dialog v-model="dialog" width="500">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" text>使い方</v-btn>
+          </template>
+          <v-card>
+            <v-card-title class="headline green lighten-2">現在地からホテルと飲食店検索</v-card-title>
+            <v-card-text>距離を選んで検索ボタンを押すと近くの飲食店とホテルが検索できます！ホテル(楽天)飲食店(ぐるなび)</v-card-text>
+            <v-divider></v-divider>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" text @click="dialog = false">閉じる</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </v-toolbar-items>
     </v-app-bar>
     <v-main>
       <template v-if="currentComponent == 'Start'">
-        <Start @hotels="hotels = $event" @restaurants="restaurants = $event" @goToHotelPage="currentComponent = $event"></Start>
+        <Start
+          @hotels="hotels = $event"
+          @restaurants="restaurants = $event"
+          @goToHotelPage="currentComponent = $event"
+        ></Start>
       </template>
       <template v-else-if="currentComponent == 'HotelSearch'">
         <HotelSearch :hotels="hotels"></HotelSearch>
@@ -61,7 +78,8 @@ export default {
         { name: "ホテル", valu: "HotelSearch" },
         { name: "飲食店", valu: "RestaurantSearch" },
         { name: "検索", valu: "Start" }
-      ]
+      ],
+      dialog: false
     };
   },
   components: {
