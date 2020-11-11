@@ -66,7 +66,6 @@ export default {
       console.log(latitude);
       console.log(longitude);
       axios
-        //datumType=2を１に変更して、経度緯度を変数に置き換える
         .get(
           "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?applicationId=1096600551356603387&format=json&datumType=1&latitude=" +
             this.latitude +
@@ -100,7 +99,7 @@ export default {
           console.log(error);
           // this.errored = true;
         });
-    },
+    }
   }
 };
 </script>
