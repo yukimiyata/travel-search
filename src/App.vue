@@ -32,7 +32,7 @@
     </v-app-bar>
     <v-main>
       <template v-if="currentComponent == 'Start'">
-        <Start @hotels="hotels = $event" @restaurants="restaurants = $event"></Start>
+        <Start @hotels="hotels = $event" @restaurants="restaurants = $event" @goToHotelPage="currentComponent = $event"></Start>
       </template>
       <template v-else-if="currentComponent == 'HotelSearch'">
         <HotelSearch :hotels="hotels"></HotelSearch>
