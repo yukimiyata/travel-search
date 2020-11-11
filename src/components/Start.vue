@@ -59,8 +59,7 @@ export default {
       // this.$emit("goToHotelPage", "HotelSearch");
     },
     error() {
-      //エラー時の処理を実装途中
-      console.log("error");
+      alert("現在地が取得できませんでした");
     },
     searchHotel(latitude, longitude) {
       console.log(latitude);
@@ -77,7 +76,7 @@ export default {
         .then(response => this.$emit("hotels", response.data.hotels))
         .catch(error => {
           console.log(error);
-          // this.errored = true;
+          alert("ホテル情報がありません");
         });
     },
     searchRestaurant(latitude, longitude) {
@@ -97,7 +96,7 @@ export default {
         .then(response => this.$emit("restaurants", response.data.rest))
         .catch(error => {
           console.log(error);
-          // this.errored = true;
+          alert("飲食店情報がありません");
         });
     }
   }
