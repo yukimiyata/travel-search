@@ -1,24 +1,8 @@
-# travel-search
+# 現在地からホテルと飲食店検索！
 
-## Project setup
-```
-yarn install
-```
+## 概要
+現在地からホテルと飲食店が検索できます。
+最大3キロ圏内のホテルと飲食店を距離を指定して検索できます。
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 使用技術
+Vue.js HTML CSS 楽天api ぐるなびapi Vuetify Netlify
