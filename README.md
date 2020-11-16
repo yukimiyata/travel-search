@@ -8,4 +8,4 @@
 GOTOイートやGOTOトラベルで外食や旅行がしやすくなったので、旅行を思い立った時にできるようにと思って作りました。旅行先のホテルを予約していない突発的な旅行でも旅先で困らないようにと思って作りました。
 
 ## 使用技術
-Vue.js HTML CSS 楽天api ぐるなびapi Vuetify Netlify
+Vue.js HTML CSS 楽天空室検索api ぐるなびapi Vuetify Netlify
